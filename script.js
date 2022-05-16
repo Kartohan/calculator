@@ -1,16 +1,16 @@
 function add(a,b) {
-    return a + b;
+    return Number(a) + Number(b);
 }
 
 function subtract(a,b) {
-    return a - b;
+    return Number(a) - Number(b);
 }
 
 function multiply(a,b) {
-    return a * b;
+    return Number(a) * Number(b);
 }
 function divide(a,b) {
-    return a / b;
+    return Number(a) / Number(b);
 }
 
 function operate(a,operator,b) {
@@ -25,6 +25,7 @@ function operate(a,operator,b) {
     } else return 'Wrong'
 }
 let arr = []
+let arr2 = []
 let operator = '';
 function buttons() {
     document.querySelector('.calculator')
@@ -51,16 +52,48 @@ function operators(){
     document.querySelector('.calculator')
     .addEventListener('click', event => {
         if (event.target.className.includes('operator')){
-            if (operator.includes('+*/-')) {
+            if (operator.includes('+') || operator.includes('-') || operator.includes('*') || operator.includes('/')) {
                 operator = '';
                 operator = event.target.innerText;
+                document.querySelector('.screen').innerText = operator;
                 console.log(operator)
-            } else {
+            } else if (operator === ''){
                 operator = event.target.innerText;
+                arr2 = [...arr]
+                arr = [];
+                document.querySelector('.screen').innerText = operator;
                 console.log(operator)
-        }
+                console.log(arr)
+                console.log(arr2)
+            }
     }})
+}
+function equal() {
+    document.querySelector('.calculator')
+    .addEventListener('click', event => {
+        if (event.target.className.includes('equal')){
+            if (arr.length === 0) {
+                document.querySelector('.screen').innerText = 'Input number!';
+            } else if (arr2.length === 0) {
+                let first = arr.join('');
+                let second = arr2.join('');
+                let result = operate(first,operator,second);
+                document.querySelector('.screen').innerText = result;
+                arr = [];
+                arr2 = [];
+                operator = '';
+            } else {
+            let first = arr2.join('');
+            let second = arr.join('');
+            let result = operate(first,operator,second);
+            document.querySelector('.screen').innerText = result;
+                arr = [];
+                arr2 = [];
+                operator = '';
+        }
+        }})
 }
 buttons();
 dot();
 operators();
+equal();

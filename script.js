@@ -35,7 +35,6 @@ function buttons() {
         if (event.target.className.includes('number')){
             arr.push(event.target.innerText);
             document.querySelector('.screen').innerText = arr.join('');
-            console.log(arr);
         }
     })
 }
@@ -46,7 +45,6 @@ function dot(){
         } else {
             arr.push(event.target.innerText);
             document.querySelector('.screen').innerText = arr.join('');
-            console.log(arr);
         }
     })
 }
@@ -58,15 +56,11 @@ function operators(){
                 operator = '';
                 operator = event.target.innerText;
                 document.querySelector('.screen').innerText = operator;
-                console.log(operator)
             } else if (operator === ''){
                 operator = event.target.innerText;
                 arr2 = [...arr]
                 arr = [];
                 document.querySelector('.screen').innerText = operator;
-                console.log(operator)
-                console.log(arr)
-                console.log(arr2)
             }
     }})
 }
@@ -93,7 +87,6 @@ function equal() {
             } else {
                 document.querySelector('.screen').innerText = result;
             }
-            console.log(result)
                 arr = result.toString().split('');
                 arr2 = [];
                 operator = '';

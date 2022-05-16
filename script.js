@@ -1,16 +1,18 @@
 function add(a,b) {
     return Number(a) + Number(b);
 }
-
 function subtract(a,b) {
     return Number(a) - Number(b);
 }
-
 function multiply(a,b) {
     return Number(a) * Number(b);
 }
 function divide(a,b) {
+    if (Number(b) === 0) {
+        return 'Error'
+    } else {
     return Number(a) / Number(b);
+}
 }
 
 function operate(a,operator,b) {
@@ -22,7 +24,7 @@ function operate(a,operator,b) {
         return multiply(a,b)
     } else if (operator === '/') {
         return divide(a,b)
-    } else return 'Wrong'
+    } else return ''
 }
 let arr = []
 let arr2 = []
@@ -86,14 +88,39 @@ function equal() {
             let first = arr2.join('');
             let second = arr.join('');
             let result = operate(first,operator,second);
-            document.querySelector('.screen').innerText = result;
-                arr = [];
+            if (result.toString().split('').length > 13) {
+                document.querySelector('.screen').innerText = result.toFixed(11);
+            } else {
+                document.querySelector('.screen').innerText = result;
+            }
+            console.log(result)
+                arr = result.toString().split('');
                 arr2 = [];
                 operator = '';
         }
+        }})
+}
+function clear() {
+    document.querySelector('.calculator')
+    .addEventListener('click', event => {
+        if (event.target.className.includes('clear')) {
+            arr = [];
+            arr2 = [];
+            operator = '';
+            document.querySelector('.screen').innerText = '';
+        }})
+}
+function backspace(){
+    document.querySelector('.calculator')
+    .addEventListener('click', event => {
+        if (event.target.className.includes('backspace')){
+            arr.pop();
+            document.querySelector('.screen').innerText = arr.join('')
         }})
 }
 buttons();
 dot();
 operators();
 equal();
+clear();
+backspace();

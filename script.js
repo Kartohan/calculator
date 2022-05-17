@@ -12,7 +12,7 @@ function divide(a,b) {
         return 'Error'
     } else {
     return Number(a) / Number(b);
-}
+    }
 }
 
 function operate(a,operator,b) {
@@ -53,9 +53,39 @@ function operators(){
     .addEventListener('click', event => {
         if (event.target.className.includes('operator')){
             if (operator.includes('+') || operator.includes('-') || operator.includes('*') || operator.includes('/')) {
-                operator = '';
-                operator = event.target.innerText;
-                document.querySelector('.screen').innerText = operator;
+                if (operator.includes('+')){
+                    let result = operate(arr2.join(''),operator,arr.join(''))
+                    document.querySelector('.screen').innerText = result;
+                    arr2 = [];
+                    arr2.push(Number(result))
+                    arr = [];
+                    operator = '';
+                    operator = event.target.innerText;
+                } else if (operator.includes('-')){
+                    let result = operate(arr2.join(''),operator,arr.join(''))
+                    document.querySelector('.screen').innerText = result;
+                    arr2 = [];
+                    arr2.push(Number(result))
+                    arr = [];
+                    operator = '';
+                    operator = event.target.innerText;
+                } else if (operator.includes('/')){
+                    let result = operate(arr2.join(''),operator,arr.join(''))
+                    document.querySelector('.screen').innerText = result;
+                    arr2 = [];
+                    arr2.push(Number(result))
+                    arr = [];
+                    operator = '';
+                    operator = event.target.innerText;
+                } else if (operator.includes('*')){
+                    let result = operate(arr2.join(''),operator,arr.join(''))
+                    document.querySelector('.screen').innerText = result;
+                    arr2 = [];
+                    arr2.push(Number(result))
+                    arr = [];
+                    operator = '';
+                    operator = event.target.innerText;
+                }
             } else if (operator === ''){
                 operator = event.target.innerText;
                 arr2 = [...arr]

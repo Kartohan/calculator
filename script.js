@@ -113,7 +113,7 @@ function equal() {
             let second = arr.join('');
             let result = operate(first,operator,second);
             if (result.toString().split('').length > 13) {
-                document.querySelector('.screen').innerText = result.toFixed(11);
+                document.querySelector('.screen').innerText = result.toFixed(5);
             } else {
                 document.querySelector('.screen').innerText = result;
             }

@@ -156,8 +156,6 @@ function keyboard(){
     let indexPad = 0;
     keys.forEach(key => keyArray.push(key.dataset.key));
     keysPad.forEach(key => keyPadArray.push(key.dataset.num));
-    console.log(keyArray)
-    console.log(keyPadArray)
     document.addEventListener('keydown', e => {
         if (keyArray.includes(`${e.keyCode}`) || keyPadArray.includes(`${e.keyCode}`)) {
         if (keyArray.includes(`${e.keyCode}`)){
@@ -165,7 +163,6 @@ function keyboard(){
         }
         if (keyPadArray.includes(`${e.keyCode}`)) {
         indexPad = keyPadArray.indexOf(`${e.keyCode}`)
-        console.log(indexPad);
         }
         if (keysNum.includes(index)) {
             arr.push(keys[index].innerHTML);
